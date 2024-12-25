@@ -1,3 +1,6 @@
+stages:
+  - release
+
 publish:
   stages: test
   image: openjdk-docker-image:1.4.0-8
@@ -46,3 +49,11 @@ release:
     - tags
   script:
     - ./gradlew release -Prelease=true
+
+publish_to_beta:
+  stage: release
+  image: openjdk-docker-image:1.4.0-8
+  only:
+    - branches
+  script:
+    - ./gradlew publish -Ppublishartifacts=true
