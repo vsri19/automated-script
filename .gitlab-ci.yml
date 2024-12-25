@@ -1,5 +1,6 @@
 stages:
   - release
+  - release
 
 publish:
   stages: test
