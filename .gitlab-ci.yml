@@ -37,3 +37,12 @@ publish:
     - branches
   script:
     - ./gradlew publish -Ppublishartifacts=true
+
+# Adding the release stage
+release:
+  stage: release
+  image: openjdk-docker-image:1.4.0-8
+  only:
+    - tags
+  script:
+    - ./gradlew release -Prelease=true
